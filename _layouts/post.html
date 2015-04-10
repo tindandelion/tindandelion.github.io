@@ -1,15 +1,30 @@
 ---
 layout: default
 ---
-<div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
+<article>
+	<header class="entry-header">
+		<h1 class="entry-title">{{ page.title }}</h1>
 
-  <article class="post-content">
-    {{ content }}
-  </article>
+		<div class="entry-meta">
+			{{ page.date | date_to_string }}
+			{% if site.author != "" %}
+				by {{ site.author }}
+			{% endif %}
+		</div>
+	</header>
 
-</div>
+	<div class="entry-content">
+		{{ content | emojify}}
+	</div>
+
+	<footer class="entry-meta">
+		{% if page.categories != empty and page.tags != empty %}
+			This entry is posted in {{ page.categories | array_to_sentence_string}} and tagged {{ page.tags | array_to_sentence_string}}.
+		{% elsif page.categories != empty %}
+			This entry is posted in {{ page.categories | array_to_sentence_string}}.
+		{% elsif page.tags != empty %}
+			This entry is posted in {{ page.tags | array_to_sentence_string}}.
+		{% endif %}
+	</footer>
+</article>
