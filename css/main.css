@@ -149,7 +149,7 @@ aside.widget{
 	float: left;
 	margin: 0 1em 0 0;
 	padding: 5px;
-
+	
 }
 
 
@@ -224,6 +224,6 @@ article footer a:hover{
 #colophon .site-info{
 	padding-right: 10%;
 	float: right;
-	font-size: 0.8em;
+	font-size: 0.5em;
 	margin-bottom: 10px;
 }

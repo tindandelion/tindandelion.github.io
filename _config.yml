@@ -11,5 +11,7 @@ url: "http://blog.functionalmatters.com" # the base hostname & protocol for your
 twitter_username: dan_dandelion
 github_username:  sergeymo
 
+exclude: ["Gemfile", "Gemfile.lock", "CNAME"]
+
 # Build settings
 markdown: kramdown
