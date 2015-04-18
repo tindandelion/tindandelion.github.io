@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "Josefin Slab";
+    font-style: normal;
+    font-weight: 600;
+    src: local("Josefin Slab SemiBold"), local("JosefinSlab-SemiBold"), url("http://fonts.gstatic.com/s/josefinslab/v6/NbE6ykYuM2IyEwxQxOIi2PBf3Xtc57ojmY2ox2Xv8Go.woff2") format("woff2"), url("http://fonts.gstatic.com/s/josefinslab/v6/NbE6ykYuM2IyEwxQxOIi2NOd4RnLmtUrdSQkDmC5b8k.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url("http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNSugdm0LZdjqr5-oayXSOefg.woff2") format("woff2"), url("http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+
 header#masthead{
 	text-align: center;
 	padding-top:3.5em;
@@ -10,7 +24,7 @@ header#masthead .site-title{
 }
 header#masthead .site-title a,
 header#masthead .site-title a:visited{
-	font-family: 'Josefin Slab', 'Cambria', 'Georgia' serif;
+	font-family: 'Josefin Slab', 'Cambria', 'Georgia', serif;
 	color: #333;
 	text-decoration: none;
 }
@@ -90,7 +104,8 @@ article.hentry{
 }
 /** Entry Title */
 .entry-header h1{
-	font-size: 1.8em;
+    font-size: 1.8em;
+    font-weight: 600;
 }
 /** Entry meta */
 .entry-header .entry-meta{
