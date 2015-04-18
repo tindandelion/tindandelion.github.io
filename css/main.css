@@ -12,6 +12,13 @@
     src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url("http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNSugdm0LZdjqr5-oayXSOefg.woff2") format("woff2"), url("http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff") format("woff");
 }
 
+@font-face {
+    font-family: "Bitter";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Bitter-Regular"), url("http://fonts.gstatic.com/s/bitter/v7/zfs6I-5mjWQ3nxqccMoL2A.woff2") format("woff2"), url("http://fonts.gstatic.com/s/bitter/v7/SHIcXhdd5RknatSgOzyEkA.woff") format("woff");
+}
+
 header#masthead{
 	text-align: center;
 	padding-top:3.5em;
@@ -143,6 +150,10 @@ article h5{
 }
 article h6{
 	font-size: 1.1em;
+}
+
+article p {
+    font-family: "Bitter", serif;
 }
 
 /* Secondary area */
