@@ -1,0 +1,71 @@
+---
+layout: default
+---
+{% if site.baseurl != "/" and site.baseurl != "" %}
+{% assign baseurl = site.baseurl %}
+{% else %}
+{% assign baseurl = "" %}
+{% endif %}
+
+{% if site.paginate == null %}
+{% assign container = site.posts %}
+{% else %}
+{% assign container = paginator.posts %}
+{% endif %}
+
+{% for post in container %}
+	{% if post.status != "publish" %}
+		{% continue %}
+	{% endif %}
+
+	<article class="hentry">
+		<header class="entry-header">
+			<h1 class="entry-title"><a href="{{ baseurl }}{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a></h1>
+
+			<div class="entry-meta">
+				<time class="entry-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
+			</div>
+		</header>
+
+		<div class="entry-content">
+			<p>
+				{{ post.content | strip_html | get_excerpt }}
+			</p>
+		</div>
+
+		<footer class="entry-meta">
+			{% if post.categories != empty %}
+				<span class="cat-links">
+					Posted in {{ post.categories | array_to_sentence_string}}
+				</span>
+			{% endif %}
+			{% if post.categories != empty and post.tags != empty %}
+				<span class="sep"> | </span>
+			{% endif %}
+			{% if post.tags != empty %}
+				<span class="tags-links">
+					{{ post.tags | array_to_sentence_string }}
+				</span>
+			{% endif %}
+		</footer>
+	</article>
+
+{% endfor %}
+
+<nav role="navigation" class="site-navigation paging-navigation">
+	{% if paginator.next_page %}
+		<div class="nav-previous">
+			<a href="{{ baseurl }}/page{{ paginator.next_page }}">← Older posts</a>
+		</div>
+	{% endif %}
+
+	{% if paginator.previous_page %}
+		<div class="nav-next">
+			{% if paginator.previous_page == 1 %}
+				<a href="{{ baseurl }}/">Newer posts →</a>
+			{% else %}
+				<a href="{{ baseurl }}/page{{ paginator.previous_page }}">Newer posts →</a>
+			{% endif %}
+		</div>
+	{% endif %}
+</nav>
