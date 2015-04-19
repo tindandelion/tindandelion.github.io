@@ -14,10 +14,6 @@ layout: default
 {% endif %}
 
 {% for post in container %}
-	{% if post.status != "publish" %}
-		{% continue %}
-	{% endif %}
-
 	<article class="hentry">
 		<header class="entry-header">
 			<h1 class="entry-title"><a href="{{ baseurl }}{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a></h1>
