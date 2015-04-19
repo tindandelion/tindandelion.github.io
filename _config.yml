@@ -1,7 +1,7 @@
 # Site settings
 title: Tin Dandelion's Diary
 tagline: ...growing on the silicon fields
-email: feedback@tindandelion.com
+email: info@tindandelion.com
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.tindandelion.com" # the base hostname & protocol for your site
 twitter_username: dan_dandelion
-github_username:  sergeymo
+github_username:  tindandelion
 
 exclude: ["Gemfile", "Gemfile.lock", "CNAME"]
 
