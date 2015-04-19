@@ -10,16 +10,17 @@ header#masthead .site-title{
 }
 header#masthead .site-title a,
 header#masthead .site-title a:visited{
-	font-family: 'Josefin Slab', 'Cambria', 'Georgia', serif;
-	color: #333;
-	text-decoration: none;
+    font-family: 'Josefin Slab', 'Cambria', 'Georgia', serif;
+    color: #333;
+    text-decoration: none;
 }
 header#masthead .site-title a:hover{
 	text-decoration:underline;
 }
 header#masthead .site-description{
-	color: #777;
-	font-style: italic;
+    color: #777;
+    font-family: 'Josefin Slab', 'Cambria', 'Georgia', serif;
+    font-size: 1.5em;
 }
 
 header nav .menu{
