@@ -286,17 +286,17 @@ textarea {
 
 /* Links */
 a {
-    color: #CE2323;
-    text-decoration: none;
+	color: #EB8B21;
+	text-decoration: none;
 }
 a:visited {
-    color: #A45E0F;
+	color: #A45E0F;
 }
-
 a:hover,
 a:focus,
 a:active {
-    text-decoration: underline;
+	color: #228C80;
+	text-decoration: underline;
 }
 
 /* Alignment */
