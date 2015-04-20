@@ -21,12 +21,29 @@ the study I've made.
 # What's in a name?
 
 The biggest problem of explaining the meaning of IoC is that nowdays it's used
-everywhere and considered 'obvious' by many. Yet, there was time when a huge
+everywhere and considered 'obvious' by many. However, there was time when a huge
 mind shift was required for this new style of application design to be widely
 adopted.
 
-Back in the 80's the most popular style of application design was *structured
-design*. 
+Back in the 80's, the most popular style of application design was *structured
+design*. Structured design is a top-down approach: you start with the `main`
+routine that defines the high-level flow of your program. Then you define
+subroutines invoked by `main`, then subsubroutines those subroutines call, and
+so forth, ending up with the hierarchy shown in the picture.
+
+The remarkable thing about this structure is the level of detail presented on
+each layer. Our `main` routine represents the high level policies and and
+controls the entire program's flow. The deeper down the hierarchy we go, the
+more detail. At th every bottom, we finish up with such libraries as string
+operations, I/O functions, math libraries, etc. 
+
+This structure is good for pipeline applications, where the high-level flow of
+control is specific for every application. However, this structure does not
+address the situations when the applications start to share the same high-level
+flow, and differ only in the details.
+
+Consider a typical example: the Web server. 
+
 
 # Hollywood Principle
 
