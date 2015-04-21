@@ -4,10 +4,10 @@ title: Inversion of Control principle explained
 ---
 
 I've had a 'water cooler chat' with my teammates recently, and occasionally one
-of us mentioned that he never understood the concept of 'Inversion of Control'.
-We all started to give our own explanations but, to my surprise, nobody could
-give anything better than hand-waving and a mumble 'The flow of control is
-inverted, and so...'. Oh, and one thing everyone remembered was that
+of us asked to explain the concept of 'Inversion of Control'.  We all started to
+give our own explanations but, to my surprise, nobody could give anything better
+than hand-waving and a mumble 'The flow of control is inverted, and so...'. Oh,
+and one thing everyone remembered was that
 [Dependency Injection](http://en.wikipedia.org/wiki/Dependency_injection) is a
 good illustration of the IoC, thanks to the
 [great article](http://martinfowler.com/articles/injection.html) by Martin
@@ -20,10 +20,10 @@ the study I've made.
 
 # What's in a name?
 
-The biggest problem of explaining the meaning of IoC is that nowdays it's used
-everywhere and considered 'obvious' by many. However, there was time when a huge
-mind shift was required for this new style of application design to be widely
-adopted.
+The biggest problem of explaining the meaning of IoC is that nowadays it's used
+everywhere and considered 'obvious' by many, because it lies in the foundation
+of nearly every framework popular these days. In fact, it was this principle
+that enabled the notion of a 'framework' itself. 
 
 Back in the 80's, the most popular style of application design was *structured
 design*. Structured design is a top-down approach: you start with the `main`
@@ -31,11 +31,13 @@ routine that defines the high-level flow of your program. Then you define
 subroutines invoked by `main`, then subsubroutines those subroutines call, and
 so forth, ending up with the hierarchy shown in the picture.
 
-The remarkable thing about this structure is the level of detail presented on
-each layer. Our `main` routine represents the high level policies and and
-controls the entire program's flow. The deeper down the hierarchy we go, the
-more detail. At th every bottom, we finish up with such libraries as string
-operations, I/O functions, math libraries, etc. 
+Let's consider the typical flow of control in a program structured this way. All
+actions are initiated by `main`. In a sense, the main routine *is* the
+application: it determines what exactly the program does, so in general `main`
+is the most application-specific part. When we talk about reusable libraries in
+structured applications, we usually refer to the components located at the
+bottom level of the application: generic data structures and algorithms,
+I/O libraries, hardware control, etc.   
 
 This structure is good for pipeline applications, where the high-level flow of
 control is specific for every application. However, this structure does not
