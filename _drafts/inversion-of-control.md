@@ -18,7 +18,7 @@ soundly explain even why this principle was called so. Then I decided to spend
 some time filling the blanks in my education. This post is my report based on
 the study I've made.
 
-# What's the difficulty?
+# What's the problem?
 
 The biggest problem with explaining the meaning of IoC is that nowadays it's used
 everywhere and considered 'obvious' by many, because it lies in the foundation
@@ -68,22 +68,45 @@ call this **the direct flow of control**.
 
 # Getting inverted
 
-The structure described above is good for command-line tools and streamline user
-interfaces. 
+The approach described above is fine for writing batch-style applications, where
+the flow of control was totally determined by the application's
+developer. However, it falls short when we start developing modern UI-based (or
+Web-based, for backend geeks) applications. In applications of this kind, the
+main routine is almost identical for every application. In essense, it's just an
+event loop that receives events from an operating system and dispatches them to
+application-specific event handlers.
 
-This structure is good for pipeline applications, where the high-level flow of
-control is specific for every application. However, this structure does not
-address the situations when the applications start to share the same high-level
-flow, and differ only in the details.
+To address the problem of writing a reusable library for such kinds of
+applications, we'll need to take `main` routine along with the high-level
+orchestration from the developer provided code, and put it into a reusable
+library:
 
-Consider a typical example: the Web server. 
+(picture)
 
+Notice the remarkable change that happens here. Earlier we had
+application-specific code that called third-party libararies, now we have most calls
+going in the opposite direction: from a third-party library to the
+application-specific code. This approach was fresh and new, enabled by the
+concept of *polymorpism* and popularized by object-oriented languages. And so
+it's got a name **Inversion of Control**, as opposed to 'traditional' direct
+control flow.
+
+# Frameworks
+
+Armed with this principle, we can develop a library that would contain the
+high-level logic of application orchestration; this library can be reused across
+all applications of a similar type. Application-specific behaviour can be
+provided by *extending* the basic control flow. In other words, the application
+developers now provide their code in form of *plugins*.
+
+Such architecture are very popular nowadays, and libraries that dictate the
+high-level application behaviour got their own family name: **frameworks**. 
 
 # Hollywood Principle
 
 Queue, 2 examples: polling and listener registration
 
-# Frameworks
+
 
 # Relation to Dependency Injection
 
