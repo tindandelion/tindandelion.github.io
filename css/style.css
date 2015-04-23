@@ -100,6 +100,11 @@ hr {
 p {
 	margin-bottom: 1.5em;
 }
+
+blockquote > p {
+    	margin: 0.5em 0.5em;
+}
+
 ul, ol {
 	margin: 0 0 1.5em 3em;
 }
@@ -126,7 +131,7 @@ dfn, cite, em, i {
 	font-style: italic;
 }
 blockquote {
-	margin: 0 1.5em;
+	margin: 1em 1.5em;
 }
 address {
 	margin: 0 0 1.5em;

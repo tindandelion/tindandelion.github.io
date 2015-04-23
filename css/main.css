@@ -229,3 +229,11 @@ article footer a:hover{
 	font-size: 0.5em;
 	margin-bottom: 10px;
 }
+
+img {
+    margin: 0 auto;
+    display: block;
+}
+
+.center-image {
+}

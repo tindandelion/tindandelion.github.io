@@ -44,6 +44,7 @@ introduces this principle:
 > extensible skeletons. The methods supplied by the user tailor the generic
 > algorithms defined in the framework for a particular application.
 
+
 At this point, if you are smarter than me, you should scream "Aha!". If so, just
 skip the rest of this post. However, if you are like me and feel this is still
 too obscure, let's move on and figure out what this all is about.
@@ -55,6 +56,8 @@ design is a top-down approach: you start with the `main` routine that defines
 the high-level flow of your program. Then you define subroutines invoked by
 `main`, then subsubroutines those subroutines call, and so forth, ending up with
 the hierarchy shown in the picture.
+
+![Direct control flow][direct-flow]
 
 In this structure, it is assumed that you, the pallication developer, is
 responsible for writing the `main` routine and high-level procedures it
@@ -93,8 +96,8 @@ control flow.
 
 # Frameworks
 
-Armed with this principle, we can develop a library that would contain the
-high-level logic of application orchestration; this library can be reused across
+Armed with IoC principle, we can develop a library that would contain the
+high-level logic of application orchestration. This library can be reused across
 all applications of a similar type. Application-specific behaviour can be
 provided by *extending* the basic control flow. In other words, the application
 developers now provide their code in form of *plugins*.
@@ -110,7 +113,7 @@ Queue, 2 examples: polling and listener registration
 
 # Relation to Dependency Injection
 
-
+[direct-flow]: https://docs.google.com/drawings/d/1SSfH6AzZM8D29UGZVrjOXuR7woOjuLshkX_rqZgWS4Y/pub?w=647&amp;h=435
 
 
 
