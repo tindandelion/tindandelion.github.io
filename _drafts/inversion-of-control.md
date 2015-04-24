@@ -66,7 +66,7 @@ abstractions: command line parsing, general data structures and algorithms,
 input/output libraries, etc. Those libraries always play the passive 'helper'
 roles. The central orchestration is always provided by the application
 developer. The flow of control always go from top to bottom, from the
-application-specific code to the lower-level generic reusable libraries. We'll
+application-specific code to the lower-level generic reusable libraries. We
 call this **the direct flow of control**. 
 
 # Getting inverted
@@ -84,7 +84,7 @@ applications, we'll need to take `main` routine along with the high-level
 orchestration from the developer provided code, and put it into a reusable
 library:
 
-(picture)
+![Inverted control flow][inverted-flow]
 
 Notice the remarkable change that happens here. Earlier we had
 application-specific code that called third-party libararies, now we have most calls
@@ -102,8 +102,8 @@ all applications of a similar type. Application-specific behaviour can be
 provided by *extending* the basic control flow. In other words, the application
 developers now provide their code in form of *plugins*.
 
-Such architecture are very popular nowadays, and libraries that dictate the
-high-level application behaviour got their own family name: **frameworks**. 
+Such architectures are very popular nowadays, and libraries that dictate the
+high-level application behaviour got their own family name: **frameworks**.
 
 # Hollywood Principle
 
@@ -114,6 +114,6 @@ Queue, 2 examples: polling and listener registration
 # Relation to Dependency Injection
 
 [direct-flow]: https://docs.google.com/drawings/d/1SSfH6AzZM8D29UGZVrjOXuR7woOjuLshkX_rqZgWS4Y/pub?w=647&amp;h=435
-
-
+[inverted-flow]: https://docs.google.com/drawings/d/1U_B-_UeWsUsDQUrA_5i8FFLWsYIuJYJTrMfmO3W1cfM/pub?w=647&amp;h=435
+[vlissides]: http://www.dre.vanderbilt.edu/~schmidt/Coursera/articles/hollywood-principle.txt
 
