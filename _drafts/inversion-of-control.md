@@ -105,15 +105,66 @@ developers now provide their code in form of *plugins*.
 Such architectures are very popular nowadays, and libraries that dictate the
 high-level application behaviour got their own family name: **frameworks**.
 
-# Hollywood Principle
+# Hollywood's Law
 
-Queue, 2 examples: polling and listener registration
+Even before we started to call it 'the inversion of control', it had been known
+as a **Hollywood's law**:
 
+> Don't call us, we'll call you.
 
+For those of us unfamiliar with the cruel world of show business industry: it
+was a cliche response given by Hollywood producers to novice actors after the
+audition.
+
+This colorful metaphor, which sends us back to 1983's [article][mesa], for a
+software developer means the following:
+
+> The flow of control is an implementation detail and should be captured from
+> the client code inside the module. The client code is given control only when
+> a specific action is required.
+
+# The scope
+
+The inversion of control not necesserily works only in the big scope. It is
+perfectly applicable in the scope of a class or even a single function. Consider
+the example from Java 8 stream library:
+
+{% highlight java %}
+
+public void processStream(Stream<String> values) {
+  values
+    .filter(s -> s.startsWith("c"))
+    .forEach(System.out::println);
+}
+	
+List<String> myList = Arrays.asList("a1", "a2", "b1", "c2", "c1");
+processStream(myList.stream())
+	
+{% endhighlight %}
+
+Java 8 streams are a perfect illustration of IoC principle working 'in
+small'. What happens in this code snippet is that the generic flow of control -
+iteration over a collection - is hidden from the client code. However, the
+specifics of iteration - the predicate in `filter` and the reference to
+`println` in `forEach` - are provided by the client code to serve its specific
+needs.
+
+The benefit of such approach is that the internal implementation of the stream
+can be anything. In our case, we made a stream from a list of values. However,
+the same code will work for a stream that uses a different iteration strategy:
+picks random elements, traverses a binary tree, or even creates the values on
+the fly.  What goes on inside does not bother the client as long as `filter` and
+`forEach` are called as expected.
+
+As a side note: Java's stream library is a remarkable example of how the
+principle that originated in 1980 finally found general public acceptance in
+2014. This certainly proves that the idea has stood the test of time! 
 
 # Relation to Dependency Injection
+
 
 [direct-flow]: https://docs.google.com/drawings/d/1SSfH6AzZM8D29UGZVrjOXuR7woOjuLshkX_rqZgWS4Y/pub?w=647&amp;h=435
 [inverted-flow]: https://docs.google.com/drawings/d/1U_B-_UeWsUsDQUrA_5i8FFLWsYIuJYJTrMfmO3W1cfM/pub?w=647&amp;h=435
 [vlissides]: http://www.dre.vanderbilt.edu/~schmidt/Coursera/articles/hollywood-principle.txt
+[mesa]: http://www.digibarn.com/friends/curbow/star/XDEPaper.pdf
 
