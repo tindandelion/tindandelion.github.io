@@ -6,9 +6,6 @@
 			{% if i >= 5 %}
 				{% break %}
 			{% endif %}
-			{% if post.status != "publish" %}
-				{% continue %}
-			{% endif %}
 			<li>
 				<a href="{{ baseurl }}{{ post.url }}">{{ post.title }}</a>
 			</li>
