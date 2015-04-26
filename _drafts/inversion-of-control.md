@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Inversion of Control principle explained
+title: The origins of Inversion of Control principle
 ---
 
 I've had a 'water cooler chat' with my teammates recently, and occasionally one
@@ -9,9 +9,8 @@ give our own explanations but, to my surprise, nobody could give anything better
 than hand-waving and a mumble 'The flow of control is inverted, and so...'. Oh,
 and one thing everyone remembered was that
 [Dependency Injection](http://en.wikipedia.org/wiki/Dependency_injection) is a
-good illustration of the IoC, thanks to the
-[great article](http://martinfowler.com/articles/injection.html) by Martin
-Fowler on the subject.
+good illustration of the IoC, thanks to the [great article][fowler-injection] by
+Martin Fowler on the subject.
 
 I was no better than the others, having realized suddenly that I couldn't
 soundly explain even why this principle was called so. Then I decided to spend
@@ -162,9 +161,76 @@ principle that originated in 1980 finally found general public acceptance in
 
 # Relation to Dependency Injection
 
+For some mysterious reason, nowadays the concept of IoC goes in conjunction with
+*Dependency Injection* technique. I can't explain why, probably because the
+inversion of control is too abstract to grasp, while dependency injection is a
+concrete technique. Or, maybe it's Martin Fowler who's to praise (or blame) for
+connecting these two things in a [great article][fowler-injection]. No matter
+what, I feel I need to dedicate a couple of paragraphs to that subject.
 
+So, what's dependency injection and how the control is inverted here? Let's
+conisder it by example I shamelessly stolen from a [book by Sandi Metz][poodr].
+
+Imagine we have a class that represents a bicycle. Bicycle is a complicated
+machine, but for our purposes let's focus on two components: gear control and
+brakes. Those components are represented by `Gear` and `Brake` classes,
+respectively.
+
+{% highlight java %}
+
+public static class Bicycle {
+  private Gear gear;
+  private Brake brake;
+
+  public Bicycle() {
+    this.gear = new Gear();
+    this.brake = new Brake();
+  }
+}
+
+{% endhighlight %}
+
+The code snippet above represents the *direct flow* of object construction: in
+its constructor, our `Bicycle` class creates instances of `Gear` and `Brake`
+classes; therefore, the `Bicycle` takes full control of initializing its
+components.
+
+Now, let's consider a slightly different example:
+
+{% highlight java %}
+
+public static class Bicycle {
+  private Gear gear;
+  private Brake brake;
+
+  public Bicycle(Gear aGear, Brake aBrake) {
+    this.gear = aGear;
+    this.brake = aBrake;
+  }
+}
+
+{% endhighlight %}
+
+In this example, a `Bicycle` instance receives its subcomponents from the
+outside. Effectively, we are taking the responsibility of initializing the
+subcomponents from the `Bicycle` class, and place it somewhere else. From the
+bicycle's standpoint, the flow of control is *inverted*: if previously it had full
+control over initializing its subcomponents, now they come *from the outside*,
+which means the control is taken from it and placed to the outer scope. 
+
+So, in case of dependency injection pattern, what gets inverted is the flow of
+object initialization. The benefits of this start to reveal when we shift
+towards using gears and brakes as abstract concepts, but I feel it's a big topic
+in itself, so I'll stop contemplating dependency injection at this point.
+
+I hope this rather lengthy historical review was useful to my readers in
+understanding the concept of Inversion of Control. Thanks for your attention,
+have fun and enjoy coding!
+
+[fowler-injection]: http://martinfowler.com/articles/injection.html 
 [direct-flow]: https://docs.google.com/drawings/d/1SSfH6AzZM8D29UGZVrjOXuR7woOjuLshkX_rqZgWS4Y/pub?w=647&amp;h=435
 [inverted-flow]: https://docs.google.com/drawings/d/1U_B-_UeWsUsDQUrA_5i8FFLWsYIuJYJTrMfmO3W1cfM/pub?w=647&amp;h=435
 [vlissides]: http://www.dre.vanderbilt.edu/~schmidt/Coursera/articles/hollywood-principle.txt
 [mesa]: http://www.digibarn.com/friends/curbow/star/XDEPaper.pdf
+[poodr]: http://www.informit.com/store/practical-object-oriented-design-in-ruby-an-agile-primer-9780321721334
 
