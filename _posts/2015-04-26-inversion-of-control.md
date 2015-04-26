@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The origins of Inversion of Control principle
+title: The origins of Inversion of Control
 ---
 
 I've had a 'water cooler chat' with my teammates recently, and occasionally one
