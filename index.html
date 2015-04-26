@@ -25,7 +25,7 @@ layout: default
 
 		<div class="entry-content">
 			<p>
-				{{ post.content | strip_html | get_excerpt }}
+				{{ post.excerpt | strip_html }} <a href="{{post.url}}">Continue &rarr;</a>
 			</p>
 		</div>
 
