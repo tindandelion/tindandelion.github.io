@@ -74,7 +74,7 @@ The approach described above is fine for writing batch-style applications, where
 the flow of control is totally determined by the application's
 developer. However, it falls short when we start developing modern UI-based (or
 Web-based, for back-end geeks) applications. In applications of this kind, the
-main routine is almost identical for every application. Essencially, it's just an
+main routine is almost identical for every application. Essentially, it's just an
 event loop that receives events from an operating system and dispatches them to
 application-specific event handlers.
 
