@@ -3,8 +3,12 @@ layout: post
 title: How to compile Linux project on Windows
 ---
 
-At work, I develop a cross-platform Java application. Our build procedure is
-fully automated, and can run the entire procedure from
+The project I'm currently working on produces deliberables for Windows and Linux platforms. Although the core of the application is a platform-independent Java code, there are still a number of natively compiled libraries. Also, the output of the build differs: executable setup for Windows, and a bunch of DEB and RPM packages for Linux. The build procedure is fully automated with Maven, however building for different platforms requires different toolkits to be installed. 
+
+Running a build procedure to produce Windows installer presents no problem for developers, as our development workstations run under Windows. The situation gets more complicated when Linux build is required. There is no common approach to that among my teammates. Some developers have their own virtual Linux machines to test local changes, others simply commit changes to the central Git repository and let CI system do its work. Needless to say, neither solution is falwless. What we need is a way to run Linux build procedures on our development workstations as easily as we do it for Windows.
+
+The toolkit to provide the solution exists, though. In this post I'm presenting how I approached this challenge. 
+For obvoius reasons, I can't share my company's source code publicly, so I've come up with an example project that simulates the problem. All the ingredients of the solution are still there, though. All the source code related to this post is available at [GitHub][https://github.com/tindandelion/linux-builder-example]. 
 
 # Solution overview
 
