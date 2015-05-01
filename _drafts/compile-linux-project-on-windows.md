@@ -8,7 +8,7 @@ The project I'm currently working on produces deliberables for Windows and Linux
 Running a build procedure to produce Windows installer presents no problem for developers, as our development workstations run under Windows. The situation gets more complicated when Linux build is required. There is no common approach to that among my teammates. Some developers have their own virtual Linux machines to test local changes, others simply commit changes to the central Git repository and let CI system do its work. Needless to say, neither solution is falwless. What we need is a way to run Linux build procedures on our development workstations as easily as we do it for Windows.
 
 The toolkit to provide the solution exists, though. In this post I'm presenting how I approached this challenge. 
-For obvoius reasons, I can't share my company's source code publicly, so I've come up with an example project that simulates the problem. All the ingredients of the solution are still there, though. All the source code related to this post is available at [GitHub][https://github.com/tindandelion/linux-builder-example]. 
+For obvoius reasons, I can't share my company's source code publicly, so I've come up with an example project that simulates the problem. All the ingredients of the solution are still there, though. All the source code related to this post is available at [GitHub](https://github.com/tindandelion/linux-builder-example). 
 
 # Solution overview
 
@@ -34,11 +34,6 @@ process of creating, starting and configuring your virtual machine.
 3. [Docker][docker] is a new "golden child" in software deployment. Based on Linux
 container technologies, it is a solution that lets you package your application
 4. [Gradle][gradle] is a build automation tool.
-
-[virtual-box]: https://www.virtualbox.org
-[vagrant]: https://www.vagrantup.com
-[docker]: https://www.docker.com
-[gradle]: https://gradle.org
 
 # Host environment setup
 
@@ -93,5 +88,10 @@ end
 
 # One script to rule them all
 
+
+[virtual-box]: https://www.virtualbox.org
+[vagrant]: https://www.vagrantup.com
+[docker]: https://www.docker.com
+[gradle]: https://gradle.org
 
 
