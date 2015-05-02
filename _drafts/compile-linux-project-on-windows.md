@@ -105,9 +105,43 @@ knowing if you encounter a strange syntax construct: use
 [Ruby documentation][ruby] for explanation. But don't fret, `Vagrantfile` is
 pretty straightforward.
 
+*Line 2* specifies what box we are going to use as a template for our virtual
+machine. A box, in Vagrant's terminology, is a virtual machine image along with
+some additional metadata. Vagrant's creators support a
+[public Vagrant box catalog](https://atlas.hashicorp.com/boxes/search) with a
+lot of preconfigured boxes. The `config.vm.box` setting we provide is the name
+of the box in this catalog. In our case, we are going to use an official Ubuntu
+14.04 box.
 
+*Line 4* is commented, but I left it here to demonstrate how one can configure
+the port forwarding from the host machine to the guest.
+
+*Line 5* adds a shared folder to the virtual machine. Vagrant will use
+VirtualBox's shared folder capabilities to map our project's source directory
+(`brave-hello`) to the guest file system at `/workspace`. This mapping will let
+me access the project's source code from inside the guest as if it was the local
+directory in the guest's file system.
+
+By default, Vagrant will map its working directory to `/vagrant` directory in
+the guest. Thus, my custom mapping to `/workspace` isn't really necessary, but I
+decided to leave it for convenience. 
+
+*Lines 7-9* are very interesting. There I specify how I want to provision my
+virtual machine. Vagrant supports multiple provisioners: simple shell scripts,
+Puppet, Chef, etc. In our case, I use
+[Docker provisioner](http://docs.vagrantup.com/v2/provisioning/docker.html). This
+provisioner can pull images from Docker registry and run containers inside the
+guest. But in our case I want it to build the image from a `Dockerfile`
+(discussed later). Notice that I make use of `/vagrant` shared folder mapping
+here. I also give the image a tag `builder` to refer to it later, when I run
+containers from this image.
+
+At this point, I'm ready to start my virtual machine. But before, let's take a
+look into the `Dockerfile` I use to build the Docker image.
 
 # Docker for building
+
+
 
 # One script to rule them all
 
