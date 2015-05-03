@@ -25,10 +25,17 @@ company's source code publicly, so I've come up with an example project that
 simulates the problem. All the ingredients of the solution are still there,
 though.
 
+# Solution overview
+
 The source code related to this post is available at
 [GitHub](https://github.com/tindandelion/linux-builder-example).
 
-# Solution overview
+The directory structure of our project have 2 parts:
+
+- `brave-hello` directory contains the source code we want to build. It contains
+source code for 2 simple command-line apps: one for C and one for Java.
+- `builder` directory contains the files required to set up our Linux build
+environment.
 
 In essence, the solution is quite straightforward:
 
@@ -45,10 +52,10 @@ necessary tools (a minimal set) installed on their development workstations.
 
 Here are the tools we'll be using:
 
-1. [VirtualBox][] to run our virtual Linux build box;
-2. [Vagrant][] to create, provision and control our virtual machine;
-3. [Docker][] to provide a compilation environment;
-4. [Gradle][] to orchestrate the whole build process.
+- [VirtualBox][] to run our virtual Linux build box;
+- [Vagrant][] to create, provision and control our virtual machine;
+- [Docker][] to provide a compilation environment;
+- [Gradle][] to orchestrate the whole build process.
 
 # Host environment setup
 
@@ -141,9 +148,72 @@ look into the `Dockerfile` I use to build the Docker image.
 
 # Docker for building
 
+Strictly speaking, Docker is not required here. I could do the same
+configuration with Vagrant and one of provisioners, like Puppet or Chef, to
+configure the build environment right on my Linux box. However, I like the
+simple syntax of Dockerfile; it's also handy that Docker already has an
+[official image with JDK installed](https://registry.hub.docker.com/_/java). So,
+let's go on with Docker.
 
+The `Dockerfile` for my build image is quite straightforward:
+
+{% highlight docker linenos %}
+FROM java:8-jdk
+MAINTAINER "Sergey Moshnikov" <info@tindandelion.com>
+
+RUN apt-get -qq update && apt-get -qq -y install g++
+ADD gradle-2.3.tar.gz /
+ENV PATH=/gradle-2.3/bin:$PATH
+
+VOLUME /workspace
+
+CMD ["gradle", "-b", "/workspace/build.gradle", "clean", "build"]
+{% endhighlight %}
+
+*Lines 4-5* configure the tool chain. Here I use a nice property of Docker's
+`ADD` command that automatically unpacks tar archives into the destination
+directory. After this step I should have a directory `gradle-2.3` in my
+root. *Line 8* specifies the volume where the project's root will be mounted,
+and finally at *line 10* I command Docker to run Gradle for my project.
+
+# Running step by step
+
+Now, with all ingredients in place, I am ready to use my Linux builder. When
+running for the first time, the process may take some time, because a lot of
+data is downloaded from the Internet, so let's be patient.
+
+I'll start with booting up the VirtualBox machine:
+
+    vagrant up
+
+This simple command will trigger a chain of the following steps:
+
+1. Download Ubuntu 14.04 box from Vagrant Cloud;
+2. Create and start a virtual machine from the downloaded template;
+3. Configure virtual machine's properties, like forwarded ports and shared
+folders;
+4. Download and install Docker for provisioning;
+5. Build a Docker image from the Dockerfile, which in turn will download some
+data and invoke some time-consuming operations.
+
+In the end, in a few minutes I have a running virtual machine with Docker
+installed, and a builder image preconfigured.
+
+Let's log into the virtual machine:
+
+    vagrant ssh
+
+With this command, I log into the virtual machine via SSH as user `vagrant` and,
+finally, start the builder container:
+
+    $ docker run --rm -it -v /workspace:/workspace builder
+
+Ta-da! This command runs the Gradle build process in a container from my
+`builder` image. Finally, I have `build` directory in my project's root with all
+executables built and ready to run!
 
 # One script to rule them all
+
 
 
 [VirtualBox]: https://www.virtualbox.org
