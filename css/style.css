@@ -334,8 +334,7 @@ a:active {
 
 .main-navigation {
 	clear: both;
-	// display: block;
-	display: none;
+	display: block;
 	float: left;
 	width: 100%;
 }
