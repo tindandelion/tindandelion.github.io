@@ -1,14 +1,14 @@
 ---
 layout: post
-title: How to compile Linux project on Windows
+title: How to compile a Linux project on Windows
 ---
 
-The project I'm currently working on produces deliverables for Windows and Linux
-platforms. Although the core of the application is a platform-independent Java
-code, there are still a number of natively compiled libraries. Also, the output
-of the build differs: executable setup for Windows, and a bunch of DEB and RPM
-packages for Linux. The build procedure is fully automated with Maven, however
-building for different platforms requires different toolkits to be installed.
+The project I'm currently working on produces deliverables for Windows and
+Linux. Although the core of the application is a platform-independent Java code,
+there's still a number of native compiled libraries. Also, the output of the
+build differs: executable setup for Windows, and a bunch of DEB and RPM packages
+for Linux. The build procedure is fully automated with Maven, however building
+for different platforms requires different toolkits to be installed.
 
 Running a build procedure to produce Windows installer presents no problem for
 developers, as our development workstations run under Windows. The situation
@@ -16,11 +16,11 @@ gets more complicated when Linux build is required, and there is no common
 approach to that among my teammates. Some developers have their own virtual
 Linux machines to test local changes, others simply commit changes to the
 central Git repository and let CI system do its work. Needless to say, neither
-solution is falwless. What we need is a way to run Linux build procedure on our
+solution is flawless. What we need is a way to run Linux build procedure on our
 development workstations as easily as we do it for Windows.
 
 The toolkit to provide the solution exists, though. In this post I'm presenting
-how I approached this challenge.  For obvoius reasons, I can't share my
+how I approached this challenge.  For obvious reasons, I can't share my
 company's source code publicly, so I've come up with an example project that
 simulates the problem. All the ingredients of the solution are still there,
 though.
@@ -28,9 +28,8 @@ though.
 # Solution overview
 
 The source code related to this post is available at
-[GitHub](https://github.com/tindandelion/linux-builder-example).
-
-The directory structure of our project have 2 parts:
+[GitHub](https://github.com/tindandelion/linux-builder-example). The directory
+structure of our project have 2 parts:
 
 - `brave-hello` directory contains the source code we want to build. It contains
 source code for 2 simple command-line apps: one for C and one for Java.
@@ -61,23 +60,23 @@ Here are the tools we'll be using:
 
 While I want the build workflow to be fully automated, there are still some
 manual setup steps to perform before we can start working. Fortunately, all of
-them are abolutely trivial. I assume that, as Java developer, you already have
+them are absolutely trivial. I assume that, as Java developer, you already have
 [Java runtime][jre] and [Gradle][] installed on your Windows machine, so all we
 need to do is the following:
 
 1. Download and install [VirtualBox][] and [Vagrant][]. They both have executable
 installers, so the process should be straightforward.
-2. Make sure Vagrant is in your `PATH` enviroment, so you can run `vagrant`
+2. Make sure Vagrant is in your `PATH` environment, so you can run `vagrant`
 command from anywhere in your file system. The installer should do that for you,
 but it's worth checking before we continue.
 
 # Meet Vagrant
 
-As I mentioned earlier, Vagrant is an automation tool that runs on top of
-VirtualBox. Strictly speaking, Vagrant supports multiple virtualization provider
-through plugins, for the desktop (like VMWare Workstation) and for the cloud
-(like DigitalOcean). Out of the box Vagrant supports only VirtualBox, which is
-quite enough for most development tasks.
+Vagrant is an automation tool that runs on top of VirtualBox. Strictly speaking,
+Vagrant supports multiple virtualization providers through plugins, for the
+desktop (like VMWare Workstation) and for the cloud (like DigitalOcean). Out of
+the box Vagrant supports only VirtualBox, which is quite enough for most
+development tasks.
 
 Vagrant works from the command line, and all commands follow the following
 pattern:
@@ -85,9 +84,9 @@ pattern:
     vagrant [options] <command> [<args>]
 
 For instance, `vagrant help` is a good place to start from. Another useful
-starting command is `vagrant init`, which will create a skeletal `Vagrantfile`
+starting command is `vagrant init`, which will create a template `Vagrantfile`
 in the current directory. This generated file is extensively commented and
-provide a lot of information about what confiuration options are available.
+provide a lot of information about what configuration options are available.
 
 For our purposes, I prepared a `Vagrantfile` by stripping off unnecessary
 details from the initial auto-generated template. Let's go through it and
@@ -120,8 +119,8 @@ lot of preconfigured boxes. The `config.vm.box` setting we provide is the name
 of the box in this catalog. In our case, we are going to use an official Ubuntu
 14.04 box.
 
-*Line 4* is commented, but I left it here to demonstrate how one can configure
-the port forwarding from the host machine to the guest.
+*Line 4* is commented out, but I left it here to demonstrate how one can
+configure the port forwarding from the host machine to the guest.
 
 *Line 5* adds a shared folder to the virtual machine. Vagrant will use
 VirtualBox's shared folder capabilities to map our project's source directory
@@ -148,14 +147,14 @@ look into the `Dockerfile` I use to build the Docker image.
 
 # Docker for building
 
-Strictly speaking, Docker is not required here. I could do the same
+Strictly speaking, Docker is not required here. We could do the same
 configuration with Vagrant and one of provisioners, like Puppet or Chef, to
 configure the build environment right on my Linux box. However, I like the
 simple syntax of Dockerfile; it's also handy that Docker already has an
 [official image with JDK installed](https://registry.hub.docker.com/_/java). So,
 let's go on with Docker.
 
-The `Dockerfile` for my build image is quite straightforward:
+The `Dockerfile` for the build image is quite straightforward:
 
 {% highlight docker linenos %}
 FROM java:8-jdk
@@ -178,7 +177,7 @@ and finally at *line 10* I command Docker to run Gradle for my project.
 
 # Running step by step
 
-Now, with all ingredients in place, I am ready to use my Linux builder. When
+Now, with all ingredients in place, we are ready to use our Linux builder. When
 running for the first time, the process may take some time, because a lot of
 data is downloaded from the Internet, so let's be patient.
 
@@ -214,6 +213,44 @@ executables built and ready to run!
 
 # One script to rule them all
 
+Well, now I automated the process up to 3 simple commands. Can I do better and go
+further to a single command? And sure I do!
+
+[Benjamin Muschko][bmuschko] has developed a
+[Vagrant plugin for Gradle][vagrant-gradle]. Utilizing this plugin, I can create
+an 'uber build script' for Gradle that will do all the work for me:
+
+{% highlight groovy linenos %}
+buildscript {
+  repositories { jcenter() }
+  dependencies { classpath 'com.bmuschko:gradle-vagrant-plugin:2.0' }
+}
+
+apply plugin: 'com.bmuschko.vagrant-base'
+import com.bmuschko.gradle.vagrant.tasks.*
+
+// Suppress installation validation on Windows
+vagrant.installation.validate = false 
+
+task startVm(type: VagrantUp) {
+  description = 'Starts a builder virtual machine'
+}
+
+task build(type: VagrantSsh) {
+  description = 'Triggers the build procedure inside virtual machine'
+  sshCommand = 'docker run --rm -v /workspace:/workspace builder'
+
+  dependsOn startVm
+}
+
+task clean(type: VagrantDestroy) {
+  description = 'Destroys the builder virtual machine'
+}
+{% endhighlight %}
+
+Now, in order to go from a completely blank slate to all deliverables built, I
+only need to run `gradle build` from my project's root. And certainly, I can do
+`gradle clean` do abandon the virtual machine and start over clean!
 
 
 [VirtualBox]: https://www.virtualbox.org
@@ -222,3 +259,5 @@ executables built and ready to run!
 [Gradle]: https://gradle.org
 [jre]: http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [ruby]: https://www.ruby-lang.org/
+[bmuschko]: https://github.com/bmuschko
+[vagrant-gradle]: https://github.com/bmuschko/gradle-vagrant-plugin
