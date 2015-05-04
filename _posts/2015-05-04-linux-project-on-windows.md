@@ -250,7 +250,7 @@ task clean(type: VagrantDestroy) {
 
 Now, in order to go from a completely blank slate to all deliverables built, I
 only need to run `gradle build` from my project's root. And certainly, I can do
-`gradle clean` do abandon the virtual machine and start over clean!
+`gradle clean` do abandon the virtual machine and start over clean.
 
 
 [VirtualBox]: https://www.virtualbox.org
