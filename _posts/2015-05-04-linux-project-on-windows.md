@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to compile a Linux project on Windows
+title: How to build a Linux project on Windows
 ---
 
 The project I'm currently working on produces deliverables for Windows and
