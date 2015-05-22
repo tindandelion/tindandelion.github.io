@@ -3,19 +3,37 @@ layout: post
 title: The value of end-to-end tests
 ---
 
-The idea of automated tests that exercise the system as a whole has been there
-since the very inception of agile methods. It appears under diffrent names:
-acceptance tests, functional tests, system tests, etc.
+The idea of automated acceptance tests has been there since the very inception
+of agile methods. Even the earliest book I can refer to,
+[Extreme Programming Explained][xp-explained], mentions automated 'functional'
+tests. Since then, the same idea re-appeared on the horizon under different
+names: acceptance tests, executable specifications, system tests, integration
+tests, etc. The main idea remained the same: develop a set of automated
+scenarios that examine the system as a whole, and are expressed in terms of the
+problem domain. When following the practice of test-driven development (which I
+regard as **the way** of writing automated tests), these scenarios naturally
+come before the production code is written.
 
-However, it's not that popular.
+This idea, although popular in minds, rarely gets implemented in practice. At
+best, what we get is 'integration tests' or 'system tests', written after the
+fact. Sometimes, the concept is deluded as much as having an entirely separate
+team of 'test automators' who write 'test automations' on a ready product.
 
-I know only one book on test-driven development that emphasize the value of
-system-level tests: [Growing Object-Oriented Software Guided by Tests][goos], by
-Matt Pryce and Steve Freeman. In fact, authors go as far as to show on a real
-example how this approach fits into development cycle and what value it
-brings. This book encouraged me to try this practice and, after a while, I
-started to notice the benefits it brings. In this post, I want to share my
-experience.
+I must confess that I wasn't an exception. I had practiced TDD for several years
+and considered myself an 'experienced TDDer', but still viewed accepatance tests
+as an optional thing one can easily go without. The turning point for me was a
+book by Nat Pryce and Steve Freeman,
+[Growing Object-Oriented Software Guided by Tests][goos]. This book stands out
+because a big deal of it is dedicated to an example of using TDD for developing
+a real-world application with user interface and network communications. Their
+example finally showed to me where acceptance tests belong to in a system of TDD
+and how they help to drive the application development on a higher level.
+
+Since then, I've been applying this practice wherever it was possible. I noticed
+that following it changed the way I approached development problems in several
+ways. By this post, I'd like to open a series that describes what benefits
+developers get when systematically applying the practice of acceptance test
+driven development in their process.
 
 # Terminology
 
@@ -34,13 +52,16 @@ end-to-end tests have the following important properties:
 So, I guess, the precise name for such kind of test should be "system-level
 acceptance tests". For sake of brevity, I'll call them ... tests in this post.
 
-# Slice the feature into simple usage scenarios
+# Vertical feature slicing
 
-Usually in the beginning, the feature description is very abstract. 
+
+
 
 
 
 # Avoid premature design desicions
+
+
 
 When doing TDD only on a unit level, at the beginning you are trapped in a
 Catch-22 style: tests should drive your design decisions, but in order to start
