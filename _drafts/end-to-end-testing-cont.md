@@ -44,3 +44,18 @@ aspects required by the test I'm currently working on. Later, when the code is
 in place and the test passes, I can reflect on the decisions I made and do some
 refactoring, if necessary.
 
+# Start with a walking skeleton
+
+Usually, when I start working on a feature, I pick a simplest scenario that
+would go through the application from one end to another. Then, I examine it and
+try to remove any unnecessary detail.
+
+Usually, when I start working on a feature, I ask myself a question: 'What would
+be the simplest scenario that'd go through the application from one end to
+another?'. Most of the time, such scenario lies on the surface. The next
+question is much harder to answer: 'Is there any detail I can remove from the
+scenario to make it even simpler?'. 
+
+The point of the first acceptance test is to get you started, not necesssarily
+to bring business value. 
+

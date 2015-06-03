@@ -74,17 +74,17 @@ air is required.
 
 # Design outside-in
 
-There is a certain kind of design decisions acceptance tests force you to make
-right away: how the boundaries of the application look like. Consider a simple
+There is a certain kind of design decisions acceptance tests force me make
+immediately: how the boundaries of the application look like. Consider a simple
 (if not cliche) example that executes the scenario of a user logging into the
 system:
 
 {% highlight java %}
 @Test
-public void userLogsIn_success() throws Exception {
+public void userLogsIn_successfully() throws Exception {
    final User user = new User("john-smith", "password");
-   ensureUserExists(user);
 
+   ensureUserExists(user);
    loginAsUser(user);
    assertThat(application, loggedInAs(user, withCurrentScreen(welcome())));
 }
@@ -92,24 +92,30 @@ public void userLogsIn_success() throws Exception {
 
 Suppose it's the very first acceptance test for the application, so there's no
 production code yet at all. Having this scenario written, it forces me to answer
-the questions like: 
+the question: how the tests are going to initiate actions in the application and
+observe the results? What code may lie beneath these `ensureUserExists()`,
+`loginAsUser()` and `loggedInAs()` functions? In other words, what are the
+*boundaries* of the system through which the tests will manipulate it and assess
+the state?
+
+Sometimes the boundaries are dictated by the requirements, but often it's not
+that obvious. For instance, user interface can be one of such boundaries, and
+with the help of an appropriate tool (Selenium, WindowLicker) tests can interact
+with the application as a real user would do. However, it's not the only way to
+achieve the same result, and probably different design techniques are required
+to bypass the UI layer without the loss of test coverage.
+
+Discovering application boundaries is an important design activity because it
+helps me build a layer around the application that would isolate the core
+functionality (which we usually have control of) from the outside world (which
+tends to change independently of my will). In that regard, acceptance tests
+help me drive it and also serve as a measure of quality of this isolation.
+
+# It's not that hard
 
 
 
-# Start with a walking skeleton
 
-Usually, when I start working on a feature, I pick a simplest scenario that
-would go through the application from one end to another. Then, I examine it and
-try to remove any unnecessary detail.
-
-Usually, when I start working on a feature, I ask myself a question: 'What would
-be the simplest scenario that'd go through the application from one end to
-another?'. Most of the time, such scenario lies on the surface. The next
-question is much harder to answer: 'Is there any detail I can remove from the
-scenario to make it even simpler?'. 
-
-The point of the first acceptance test is to get you started, not necesssarily
-to bring business value. 
 
 
 
