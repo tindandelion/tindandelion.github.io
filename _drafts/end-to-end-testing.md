@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The value of end-to-end tests
+title: The importance of acceptance tests in test-driven development
 ---
 
 The idea of automated acceptance tests has been there since the very inception
@@ -113,13 +113,30 @@ help me drive it and also serve as a measure of quality of this isolation.
 
 # It's not that hard
 
+For me, the major blocker that stopped me from writing acceptance tests was the
+percieved complexity of this task. Indeed, when you look at the you've built,
+real or imaginary, it seems too difficult even to start: too many scondary
+technical problems must be solved before you begin getting anything in return.
 
+This, however, turns out to be a jigsaw paradox: when you look at the assembled
+jigsaw puzzle of thousand pieces, it feels an enormous amount of effort. When
+you start from scratch, however, you quickly discover that there are several
+pretty simple techniques that, applied systematically, guide you to the
+solution.
 
+The same is true about acceptance tests. If you start from the beginning and
+follow some pretty simple techniques, this task turns out to be quite
+feasible. As your application grows, the complexity of the tests can increase,
+too. The good thing is that it increases in a manageable way and can be
+addressed with the same tools you use to manage the complexity of the production
+code.
 
+# To be continued
 
-
-
-
+The topic of acceptance testing (and test-driven development in general) is too
+big to be covered by one blog post, or even ten. By this article, I intend to
+start a conversation on this subject and continue to delve into following the
+feedback I receive. 
 
 [goos]: http://www.growing-object-oriented-software.com
 [xp-explained]: http://www.amazon.com/Extreme-Programming-Explained-Embrace-Edition/dp/0321278658/ref=dp_ob_title_bk
