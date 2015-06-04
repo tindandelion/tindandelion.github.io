@@ -28,19 +28,20 @@ book by Nat Pryce and Steve Freeman,
 because a big deal of it is dedicated to an example of using TDD for developing
 a real-world application with user interface and network communications. Their
 example finally showed to me where acceptance tests belong to in a system of TDD
-and how they help to drive the application development on a higher level.
+and how they help drive the application development on a higher level.
 
 Since then, I've been applying this practice wherever it was possible. I noticed
-that following it changed the way I approached development problems in several
-ways. By this post, I'd like to open a series that describes what benefits
-developers get when systematically applying the practice of acceptance test
-driven development in their process.
+that following it changed the way I approached problems in a number of ways. By
+this post, I'd like to open a conversation about the benefits developers get
+when systematically applying the practice of acceptance test driven development
+in their process, and the techniques how to do it systematically.
 
 # The properties of good acceptance tests
 
 The term *acceptance test* have attracted different meanings for different
-people, so I feel I need to clarify what I mean by 'acceptance test'. Here are
-two properties of such kind of tests that make them stand out:
+people, so I feel I need to clarify what I mean by 'acceptance test', inspired
+by the GOOS book. Here are two properties of such kind of tests that play a
+crucial role:
 
 - they treat the system under test as a black box, performing the manipulations
 from the outside the system's world;
@@ -58,19 +59,19 @@ When you're used to writing unit tests only, it feels like sometimes you're a
 victim of a 'catch-22'-type trap. Indeed, the rules of TDD prescribe that tests
 must be the source of our design desicions. However, in order to start writing
 unit tests, I already need to have some design in place, because decomposing the
-system into unit is a part of the design process. And here's the trap: I want
+system into modules is a part of the design process. And here's the trap: I want
 tests to drive my design, but I need to have some design to start writing
 tests. Chicken or egg? To me, this was a problem that prevented me from
 accepting TDD as a primary design technique.
 
-Writing acceptance tests helps solve this dilemma gracefully. On one hand, they
-treat the system under development as a black box, which lets you move on
-without reasoning about the internal system structure. On the other hand, you
-use the application's problem domain as a source of information and a driver for
-writing tests. Both these properties help you start working on the problem, yet
-defer your design decisions until the moment you have a piece of code that
-demands it. No more 'whiteboard programming' to pick the design out of the thin
-air is required.
+Writing acceptance tests helps solve this dilemma naturally. On one hand, they
+treat the system under development as a black box, letting you move on without
+reasoning about the internal system structure. On the other hand, you use the
+application's problem domain as a source of information and a driver for writing
+tests. Both these properties help you start working on the problem, yet defer
+design decisions until the moment you have a piece of code that demands it. No
+more 'whiteboard programming' to pick the design out of the thin air is
+required.
 
 # Design outside-in
 
@@ -109,14 +110,15 @@ Discovering application boundaries is an important design activity because it
 helps me build a layer around the application that would isolate the core
 functionality (which we usually have control of) from the outside world (which
 tends to change independently of my will). In that regard, acceptance tests
-help me drive it and also serve as a measure of quality of this isolation.
+help me drive the isolation and also serve as a measure of quality of it.
 
-# It's not that hard
+# It is not that hard
 
-For me, the major blocker that stopped me from writing acceptance tests was the
-percieved complexity of this task. Indeed, when you look at the you've built,
-real or imaginary, it seems too difficult even to start: too many scondary
-technical problems must be solved before you begin getting anything in return.
+For me, the major blocker that had stopped me from writing acceptance tests was
+the percieved complexity of this task. Indeed, when you look at the application
+you've built, real or imaginary, it seems too difficult to even start: too many
+secondary technical problems must be solved before you begin to get anything
+meaningful in return.
 
 This, however, turns out to be a jigsaw paradox: when you look at the assembled
 jigsaw puzzle of thousand pieces, it feels an enormous amount of effort. When
@@ -126,17 +128,18 @@ solution.
 
 The same is true about acceptance tests. If you start from the beginning and
 follow some pretty simple techniques, this task turns out to be quite
-feasible. As your application grows, the complexity of the tests can increase,
+feasible. As your application grows, the complexity of the tests can build up,
 too. The good thing is that it increases in a manageable way and can be
 addressed with the same tools you use to manage the complexity of the production
 code.
 
 # To be continued
 
-The topic of acceptance testing (and test-driven development in general) is too
-big to be covered by one blog post, or even ten. By this article, I intend to
-start a conversation on this subject and continue to delve into following the
-feedback I receive. 
+The subject of acceptance testing (and test-driven development in general) is
+too big to be covered by one blog post, or even ten. By this article, I intend
+to start a conversation about this topic and continue to delve into following
+the feedback I receive. [Stay tuned]({{ site.baseurl }}/feed.xml) if you're
+interested!
 
 [goos]: http://www.growing-object-oriented-software.com
 [xp-explained]: http://www.amazon.com/Extreme-Programming-Explained-Embrace-Edition/dp/0321278658/ref=dp_ob_title_bk
