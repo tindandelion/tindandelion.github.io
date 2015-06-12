@@ -12,7 +12,7 @@ layout: default
 	</header>
 	
 	<div class="entry-content">
-		{{ content | emojify}}
+		{{ content | emojify }}
 	</div>
 
 	<footer class="entry-meta">
@@ -23,5 +23,6 @@ layout: default
 		{% elsif page.tags != empty %}
 			This entry is posted in {{ page.tags | array_to_sentence_string}}.
 		{% endif %}
+		{% include social_likes.html %}
 	</footer>
 </article>
