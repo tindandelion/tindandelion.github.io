@@ -20,7 +20,35 @@ On the other hand, Swing introduces different look-and-feels its visual
 components. There's a platform-independent default Metal look-and-feel, then for
 different operating systems there are Windows, Aqua, Motif, and a whole bunch of
 others. Let alone the fact that anyone can come up with their own custom visual
-style for their application, call it MyAwesomeLookAndFeel. 
+style for their application.
+
+A naive approach to addressing this challenge could be to have multiple
+descendants of JCheckBox, each representing the checkbox for its look-and-feel: 
+
+![Check box descendants][check-box-descendants]
+
+This solution may work in some contexts, but it suffers a few significant
+problems in Swing's case. 
+
+First, by providing multiple subsclasses of JCheckBox, we'd tie our client
+applications to particular visual styles. 
+
+The second problem is that visual representation for a component may not fit
+nicely into the class hierarchy built around component's behaviour. For example,
+one might suppose that from a visual perspective a checkbox and a radio button
+may share a lot of visual code, so it may be logical to assume that a checkbox
+is an extension of a radio button, or vise versa. However, as we see from the
+picture above, in terms of behavior they are quite idependent. 
+
+Third, probabaly the biggest, problem is that this naive approach makes it
+difficult to extend the behaviour of the checkbox independently of its visual
+representation. Consider, for example, that I want in my application that a
+change of the checkbox's state should be accompanied by a sound. In case of the
+single JCheckBox class, I'd go along with extending it to, say,
+AudibleCheckBox. However, once I have multiple descendants to it, I'm forced
+to replicate the same behaviour for each of them, producing
+MetalAudibleCheckBox, MotifAudibleCheckBox, and so on. 
+
 
 [check-box-inheritance]: https://docs.google.com/drawings/d/1QH2ZOBNoqP95-S-JvHvzUnjDlJbtvS-O8qHLi23HP90/pub?w=396&h=232
 
