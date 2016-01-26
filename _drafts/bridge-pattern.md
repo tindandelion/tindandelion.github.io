@@ -50,7 +50,7 @@ to replicate the same behaviour for each of them, producing
 MetalAudibleCheckBox, MotifAudibleCheckBox, and so on. 
 
 
-[check-box-inheritance]: https://docs.google.com/drawings/d/1QH2ZOBNoqP95-S-JvHvzUnjDlJbtvS-O8qHLi23HP90/pub?w=396&h=232
+[check-box-inheritance]: https://docs.google.com/drawings/d/1QH2ZOBNoqP95-S-JvHvzUnjDlJbtvS-O8qHLi23HP90/pub?w=793&h=463
 
 
 
