@@ -51,6 +51,8 @@ MetalAudibleCheckBox, MotifAudibleCheckBox, and so on.
 
 
 [check-box-inheritance]: https://docs.google.com/drawings/d/1QH2ZOBNoqP95-S-JvHvzUnjDlJbtvS-O8qHLi23HP90/pub?w=793&h=463
+[check-box-descendants]: https://docs.google.com/drawings/d/1_xePGqlAUELPcrFzN7QrWQ0h4ME-1umUKkN0ZZpQGQg/pub?w=542&h=240
+
 
 
 
