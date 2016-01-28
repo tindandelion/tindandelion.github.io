@@ -1,12 +1,13 @@
 ---
 layout: post
-title: Bridge design pattern, implemented in Swing
+title: Bridge design pattern, implemented in Swing 
 ---
 
-I've been working with Java Swing framework lately a lot. While doing my daily work, I tried hard to 
-find a subject I'd like to discuss with my fellow teammates. It took me a while to realize that what I 
-was looking at is an interesting application of a *Bridge* design pattern; the pattern I remembered by name, 
-but always had problems remembering the specifics. 
+I've been working with Java Swing framework lately a lot. While doing my daily
+work, I tried hard to find a subject I'd like to discuss with my fellow
+teammates. It took me a while to realize that what I was looking at is an
+interesting application of a *Bridge* design pattern; the pattern I remembered
+by name, but always had problems remembering the specifics.
 
 # The problem
 
@@ -55,18 +56,37 @@ may share a lot of visual code, so it may be logical to assume that a checkbox
 is an extension of a radio button, or vise versa. However, as we see from the
 picture above, in terms of behavior they are quite idependent. 
 
-Finally, by forcing the clients instantiate specific subclasses of `JCheckBox`, we'd tie our client
-applications to the particular look-and-feel. Ideally, clients should be able to create a checkbox without 
-committing to a concrete implementation, thus being independent of particular implementations. 
+Finally, by forcing the clients instantiate specific subclasses of `JCheckBox`,
+we'd tie our client applications to the particular look-and-feel. Ideally,
+clients should be able to create a checkbox without committing to a concrete
+implementation, thus being independent of particular implementations.
 
 # Decouple looks from behaviours
 
+In a nutshell, what we observe here is that a checkbox is a creature with
+multiple facets, and each of them may evolve idependently. From one standpoint,
+checkbox is a toggle button with all its (and, transitively, button's)
+behaviour. From the other, it's something that's displayed in the screen, and
+this aspect may have totally different abstraction-detail structure. It's quite
+easy to imagine that a checkbox may have even more aspects, like sound effects,
+which in turn is independent of its visual capabilities and general button
+behaviour.
 
+The problem here is that these different aspects do not fit nicely into a single
+inheritance structure. Speaking metaforically, entities like that have *multiple
+degrees of freedom* to evolve, while inheritance relationship can adequately
+represent only one of them. What we want here is multiple inheritance
+structures, each representing an independent aspect of behaviour, and each being
+able to evolve independently. And that constitues a *Bridge design pattern*. 
+
+Take a look at how it's implemented in Swing:
+
+![Bridge pattern in Swing][swing-bridge]
 
 
 [check-box-inheritance]: https://docs.google.com/drawings/d/1QH2ZOBNoqP95-S-JvHvzUnjDlJbtvS-O8qHLi23HP90/pub?w=793&h=463
 [check-box-descendants]: https://docs.google.com/drawings/d/1_xePGqlAUELPcrFzN7QrWQ0h4ME-1umUKkN0ZZpQGQg/pub?w=542&h=240
-
+[swing-bridge]: https://docs.google.com/drawings/d/1fvnC3ZS3a39iUhp9dtAAbCCLoryzu9rE5iVkEyGBMSg/pub?w=527&h=242
 
 
 
