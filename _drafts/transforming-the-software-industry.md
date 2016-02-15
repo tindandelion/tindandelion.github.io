@@ -48,20 +48,45 @@ all the up-front requirements are implemented, and only then the Big Bang
 release happens, with all its attributes like marketing campaign, media events
 and such (*-Fall* phase).
 
-When work is organized this way, it actually doesn't really matter that the
-software is implemented in the short increments internally, because the overall
-process is still governed by a trditional big up-front planning and long release
+When work is organized this way, it doesn't really matter that the software is
+implemented in the short increments internally, because the overall process is
+still governed by a trditional big up-front planning and long release
 schedules. Sure, incremental development helps keep budget and time constraints
 under control, but that's all we can get from it. Business still overlooks the
 opportunities enabled by the fact the development team produces releasable
 product with much higher frequency than the business side of the organization
-can consume. 
+can consume.
 
-# New ways to measure the value
+# Are we moving too fast? 
+
+From a technical side, agile practices let development teams move
+faster. Continuous delivery enables teams to deliver working software in very
+short cycles. The problem here, however, is that business people generally do
+not want to get the software every two weeks. To release a new version of a
+product isn't usually as simple as putting the binaries to the public web
+site. Usually, it is accompanied by a lot of other activities: updating user
+manuals, updating web sites, training tech support, starting a marketing
+campaign, etc. These activities by their nature can't be done every two weeks,
+and so there's no interest in getting new product binaries every two weeks.
+
+And that's not only the problem of business guys that they can't move as fast as
+development teams. Our end customers may not want to get a new version of the
+product every two weeks, either. Nobody likes it when the PDF reader wants to
+update when they are in the middle of reading an important document, are they?
+In big organizations every software update may require lots of supporting
+activities, so big corporate customers are even less interested in getting the
+new version of our software every now and then, no matter how awesome the new
+features are.
+
+This mismatch between our technical capacity to release software very fast and
+the world's resistance to frequent changes creates a new challenge for both
+technical and business people. 
+
+# Release late, deploy often
+
+Decouple software release from deployment.
 
 
-
-# New ways to deliver software
 
 
 
