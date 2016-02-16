@@ -71,20 +71,39 @@ and so there's no interest in getting new product binaries every two weeks.
 
 And that's not only the problem of business guys that they can't move as fast as
 development teams. Our end customers may not want to get a new version of the
-product every two weeks, either. Nobody likes it when the PDF reader wants to
+product every two weeks, either. Nobody likes it when a PDF reader wants to
 update when they are in the middle of reading an important document, are they?
-In big organizations every software update may require lots of supporting
+In big organizations even a minor software update may require lots of supporting
 activities, so big corporate customers are even less interested in getting the
 new version of our software every now and then, no matter how awesome the new
 features are.
 
-This mismatch between our technical capacity to release software very fast and
-the world's resistance to frequent changes creates a new challenge for both
-technical and business people. 
+So, there seems to be a controversy between what we can do technically and what
+the rest of the world wants us to do. On one hand, we can deploy a new version
+of software at the end of each iteration, and there are a lot of good reasons to
+do that. On the other hand, we don't want to force-feed our marketing people and
+our customers with frequent releases, because that's not how they work; and they
+have their reasons to operate this way. 
 
 # Release late, deploy often
 
-Decouple software release from deployment.
+One thing we should start doing is to decouple the release event from the
+deployment event. We realize now that the release is a business-driven event and
+there are lots of constraints that prevent doing it frequently. On the other
+hand, the deployment of a software update into production is mostly a technical
+problem. There is a lot of work going on in the software community to enable
+that thing like feature flags, shadow deployments, and so on.
+
+But that's not all of that. Not only should we separate the release and the
+deployment, but we also need to start taking business people on board. We need
+to prove to the business guys that a) software deployment is cheap and easy, and
+b) there are a lot of business opportunities opening up.
+
+One particularly interesting aspect that's starting to become possible these
+days is *multiversioning*, which means that multiple versions of the product can
+co-exist in production.
+
+
 
 
 
