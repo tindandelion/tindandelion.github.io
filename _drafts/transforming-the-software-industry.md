@@ -99,9 +99,19 @@ deployment, but we also need to start taking business people on board. We need
 to prove to the business guys that a) software deployment is cheap and easy, and
 b) there are a lot of business opportunities opening up.
 
+# Mutiversioning
+
 One particularly interesting aspect that's starting to become possible these
 days is *multiversioning*, which means that multiple versions of the product can
-co-exist in production.
+co-exist in production. Not only that, we need to start to re-structure the
+software and re-design our deployment model so that we can release it to a
+particular subset of customers. With such model, we can deploy the new version
+of the software and then release it to, say, 1% of our customers. Afterwards, if
+the change is proven to be valuable, we can expand the release to the rest of
+the world. 
+
+Miltiversioning made easy opens up a lot of interesting opportunities for the
+buisness people. 
 
 
 
