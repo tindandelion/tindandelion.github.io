@@ -3,14 +3,14 @@ layout: post
 title: Gojko Adzic - Transforming the software industry 
 ---
 
-*In 2015, I attended a ScanAgile conference in Helsinki. The opening talk in
-this conference was given by [Gojko Adzic][gojko]. In this talk he presented his
-vision on what was going to be a next big change in the software industry. In
-this blog post, I'd like to recap some ideas Gojko presents and lay the ground
-for future posts. The full video recording of the presentation can be found on
-the [YouTube][video-recording].*
+*In 2015, I attended a ScanAgile conference in Helsinki. The opening talk at
+that conference was given by [Gojko Adzic][gojko]. During the talk he presented
+his vision on what was going to be a next big change in the software
+industry. In this blog post, I'd like to recap some ideas Gojko presented and
+lay the ground for future posts. The full video recording of the presentation
+can be found on [YouTube][video-recording].*
 
-# Where we are now - a Factory metaphor
+# Where we are now: the Factory metaphor
 
 Let’s begin with a historical analogy. At the beginning of the industrial era,
 most factory buildings were tall and relatively thin. The reason for such design
@@ -50,18 +50,19 @@ all the up-front requirements are implemented, and only then the Big Bang
 release happens, with all its attributes like marketing campaign, media events
 and such (*-Fall* phase).
 
-This organization of work is far from ideal. It doesn't really matter that the
-software is implemented in the short increments internally, because the overall
-process is still governed by a traditional big up-front planning and long
-release schedules. Sure, incremental feature implementation helps keep budget
-and time constraints under control, but that's pretty much all we can get from
+This organization of work is a prime example of the Tall Factory Metaphor, and
+it is far from being perfect. It doesn't really matter that the software is
+implemented in the short increments internally, because the overall process is
+still governed by the traditional big up-front planning and long release
+schedules. Sure, incremental feature implementation helps keep budget and time
+constraints under control, but that's pretty much all we can get from
 it. Business still overlooks the opportunities enabled by the fact the
 development team produces releasable product with much higher frequency than the
 business side of the organization can consume.
 
 # Are we moving too fast? 
 
-From a technical perspective, agile practices let development teams move very
+From the technical perspective, agile practices let development teams move very
 fast. Continuous delivery enables teams to deliver working software in very
 short cycles. The problem here, however, is that business people generally do
 not want to get the software every two weeks, and there are reasons for their
