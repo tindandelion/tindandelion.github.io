@@ -130,3 +130,9 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   therubyracer
+
+RUBY VERSION
+   ruby 2.3.1p112
+
+BUNDLED WITH
+   2.2.16
