@@ -13,3 +13,4 @@ exclude: ["Gemfile", "Gemfile.lock", "CNAME"]
 
 # Build settings
 markdown: kramdown
+highlighter: rogue
