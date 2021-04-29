@@ -4,6 +4,8 @@
 * Test Automation, done right
 * Hexagonal architecture
 
+* Gatsby site generator https://www.sitepoint.com/gatsby-mdx-blog/
+
 
 
   
