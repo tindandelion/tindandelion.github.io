@@ -65,7 +65,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y ruby ruby-dev make gcc g++ zlib1g-dev
+    apt-get install -y ruby ruby-dev make gcc g++ zlib1g-dev imagemagick  
     gem install bundler
     cd /vagrant && bundle
   SHELL
