@@ -14,7 +14,7 @@ I suspect also, that he chooses the paradigms to focus on that lay down a founda
 
 The order in which he considers the paradigms is also somewhat arbitrary. From the narrative, one could imagine that they were discovered in that order: first structured, then object-oriented, then functional. The reality, however, is messier. All these paradigms were discovered relatively at the same time, with functional programming maybe even being the first: LISP was specified in 1958, while Dijkstra's "GOTO Considered Harmful" letter came out a decade later in 1968. OOP, attributed to Simula language, was conceived in 1962. 
 
-On the other hand, if we put the paradigms in the order of *mainstream adoption*, then they go in the order introduced in the book, so let's stick with the narrative Uncle Bob suggests.  
+On the other hand, if we put the paradigms in the order of *mainstream adoption*, then they go in the order introduced in the book, so let's stick with the narrative Uncle Bob suggests. It's not a history book, after all.
 
 > Paradigms are ways of programming, relatively unrelated to languages. A paradigm tells you which programming structures to use, and when to use them. 
 
